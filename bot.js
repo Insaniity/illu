@@ -8,22 +8,15 @@ client.on("ready", () => {
 //			client.user.setAvatar('./icon.png')
 // 			.then(user => console.log(`New avatar set!`))
 //			.catch(console.error);
+			client.user.setUsername("Ben's Chat")
+ 			 .then(user => console.log(`My new username is ${user.username}`))
+ 			 .catch(console.error);
 });
 
 
 
 client.on('message', message => {
-
-let talkedRecently = new Set();
-if (talkedRecently.has(message.author.id)) {
-  return;
-}
-talkedRecently.add(message.author.id);
-setTimeout(() => {
-  talkedRecently.delete(message.author.id);
-}, 2500);
-
-
+	
     if (message.content === 'ping') {
     	message.channel.send('pong');
   	}
