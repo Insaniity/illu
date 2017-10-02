@@ -7,7 +7,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
     if (message.content === 'ping') {
-    	message.reply('drop dead kid');
+    	message.channel.sebd('pong');
   	}
 });
 
