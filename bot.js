@@ -16,7 +16,7 @@ client.on("ready", () => {
 
 module.exports.fire = (text, guild) => {
     if (!guild.channels) return
-    let channel = guild.channels.find(c => c.topic === 'xaq-modlog')
+    let channel = guild.channels.find(c => c.topic === 'logs')
     if (!channel) return
     let time = `**\`[${moment().format("M/D/YY - hh:mm")}]\`** `
     channel.send(time + text, {
