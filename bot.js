@@ -15,12 +15,12 @@ client.on("ready", () => {
 client.on('message', message => {
 
 let talkedRecently = new Set();
-if (talkedRecently.has(<Message>.author.id)) {
+if (talkedRecently.has(message.author.id)) {
   return;
 }
-talkedRecently.add(<Message>.author.id);
+talkedRecently.add(message.author.id);
 setTimeout(() => {
-  talkedRecently.delete(<Message>.author.id);
+  talkedRecently.delete(message.author.id);
 }, 2500);
 
 
