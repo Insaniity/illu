@@ -24,17 +24,17 @@ module.exports.fire = (text, guild) => {
     })
 }
 
-bot.on('messageDelete', msg => {
+client.on('messageDelete', msg => {
     if (msg.channel.type !== "text") return
     exports.fire(`**#${msg.channel.name} | ${msg.author.tag} deleted their message:** \`${msg.content}\``, msg.guild)
 })
 
-bot.on('messageUpdate', (msg, newMsg) => {
+client.on('messageUpdate', (msg, newMsg) => {
     if (msg.content === newMsg.content) return
     exports.fire(`**#${msg.channel.name} | ${msg.author.tag} edited their message:**\n**before:** \`${msg.content}\`\n**+after:** \`${newMsg.content}\``, msg.guild)
 })
 
-bot.on('guildMemberUpdate', (old, nw) => {
+client.on('guildMemberUpdate', (old, nw) => {
     let txt
     if (old.roles.size !== nw.roles.size) {
         if (old.roles.size > nw.roles.size) {
@@ -52,15 +52,15 @@ bot.on('guildMemberUpdate', (old, nw) => {
     exports.fire(txt, nw.guild)
 })
 
-bot.on('roleCreate', (role) => {
+client.on('roleCreate', (role) => {
     exports.fire("**New role created**", role.guild)
 })
 
-bot.on('roleDelete', (role) => {
+client.on('roleDelete', (role) => {
     exports.fire("**Role deleted -> `" + role.name + "`**", role.guild)
 })
 
-bot.on('roleUpdate', (old, nw) => {
+client.on('roleUpdate', (old, nw) => {
     let txt
     if (old.name !== nw.name) {
         txt = `**${old.name} | Role name updated to -> \`${nw.name}\`**`
@@ -68,11 +68,11 @@ bot.on('roleUpdate', (old, nw) => {
     exports.fire(txt, nw.guild)
 })
 
-bot.on('guildBanAdd', (guild, user) => {
+client.on('guildBanAdd', (guild, user) => {
     exports.fire(`**User banned -> \`${user.tag}\`**`, guild)
 })
 
-bot.on('guildBanRemove', (guild, user) => {
+client.on('guildBanRemove', (guild, user) => {
     exports.fire(`**User unbanned -> \`${user.tag}\`**`, guild)
 })
 
@@ -84,4 +84,4 @@ client.on('message', message => {
 });
 
 
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.client_TOKEN);
