@@ -1,4 +1,4 @@
-module.exports.run = (bot, message, args) => {
+module.exports.run = (client, message, args) => {
   if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("You do not have kick_members.");
   if (!message.mentions.users.first()) return message.channel.send("**Mention a user or multiple users to kick them.**")
     let ment = message.mentions.users;

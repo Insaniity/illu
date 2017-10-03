@@ -1,4 +1,4 @@
-module.exports.run = (bot, message, args) => {
+module.exports.run = (client, message, args) => {
     if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("You do not have `BAN_MEMBERS`.");
     if (!message.mentions.users.first()) return message.channel.send("Mention a user or multiple users to ban them.")
     let ment = message.mentions.users;
@@ -6,7 +6,7 @@ module.exports.run = (bot, message, args) => {
     ment.forEach(m => {
 
         if (!message.guild.member(m).bannable) {
-            message.channel.send("Something went wrong when banning: "+m.username);          
+            message.channel.send("Something went wrong when banning: "+m.username);
         } else {
             message.guild.ban(message.guild.member(m)).then(() => {
                 text.push(m.username)

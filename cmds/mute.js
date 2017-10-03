@@ -1,6 +1,6 @@
 const fs = module.require("fs");
 
-module.exports.run =  (bot, message, args) => {
+module.exports.run =  (client, message, args) => {
 	if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You do not have manage messages.");
 
 	let toMute = message.mentions.members.first() || message.guild.members.get(args[0]);
