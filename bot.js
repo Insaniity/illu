@@ -3,6 +3,8 @@ const client = new Discord.Client();
 const moment = require('moment')
 const fs = require("fs");
 
+const prefix = "!";
+
 client.on("ready", () => {
    	  client.user.setStatus("dnd"); //dnd , online , ldle
       client.user.setGame("im special c;");
@@ -95,11 +97,40 @@ fs.readdir("./cmds/", (err, files) => {
 	});
 });
 
-client.on('message', message => {
+bot.on("message", message => {
+	if(message.author.bot) return;
+/*	if(message.channel.type === "dm") {
+ 	clbot.write(message.content, (response) => {
+      message.channel.startTyping();
+      setTimeout(() => {
+        message.channel.send(response.output).catch(console.error);
+        message.channel.stopTyping();
+      }, Math.random() * (1 - 3) + 1 * 1000);
+    }); return;
+	} */
 
-    if (message.content === 'ping') {
-    	message.channel.send('pong');
-  	}
+	let messageArray = message.content.split(/\s+/g);
+	let command = messageArray[0];
+	let args = messageArray.slice(1);
+    var cmdTxt = message.content.split(" ")[0].substring(1).toLowerCase();
+    var suffix = message.content.substring(cmdTxt.length + 2);
+
+/*	if(message.content.includes('<@335351230601887764>')) {
+    clbot.write(message.content, (response) => {
+      message.channel.startTyping();
+      setTimeout(() => {
+        message.channel.send(response.output).catch(console.error);
+        message.channel.stopTyping();
+      }, Math.random() * (1 - 3) + 1 * 1000);
+    });
+  } */
+
+	if(!command.startsWith(prefix)) return;
+
+
+
+	let cmd = bot.commands.get(command.slice(prefix.length));
+	if(cmd) cmd.run(bot, message, args);
 });
 
 
