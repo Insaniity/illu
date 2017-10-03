@@ -129,8 +129,15 @@ bot.on("message", message => {
 
 
 
+<<<<<<< HEAD
 	let cmd = bot.commands.get(command.slice(prefix.length));
 	if(cmd) cmd.run(bot, message, args);
+=======
+    //if (message.content === 'ping') //{
+    	//message.channel.send('pong');
+  	//}
+
+>>>>>>> fea019e0e7de2bb3f186c3c0c9962ba61d245841
 });
 
 
