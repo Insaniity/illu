@@ -93,14 +93,14 @@ fs.readdir("./cmds/", (err, files) => {
 	jsfiles.forEach((f, i) => {
 		let props = require(`./cmds/${f}`);
 		console.log(`${i + 1}: ${f} loaded!`);
-		bot.commands.set(props.help.name, props);
+		client.commands.set(props.help.name, props);
 	});
 });
 
-bot.on("message", message => {
-	if(message.author.bot) return;
+client.on("message", message => {
+	if(message.author.client) return;
 /*	if(message.channel.type === "dm") {
- 	clbot.write(message.content, (response) => {
+ 	clclient.write(message.content, (response) => {
       message.channel.startTyping();
       setTimeout(() => {
         message.channel.send(response.output).catch(console.error);
@@ -116,7 +116,7 @@ bot.on("message", message => {
     var suffix = message.content.substring(cmdTxt.length + 2);
 
 /*	if(message.content.includes('<@335351230601887764>')) {
-    clbot.write(message.content, (response) => {
+    clclient.write(message.content, (response) => {
       message.channel.startTyping();
       setTimeout(() => {
         message.channel.send(response.output).catch(console.error);
@@ -127,8 +127,8 @@ bot.on("message", message => {
 
 	if(!command.startsWith(prefix)) return;
 
-	let cmd = bot.commands.get(command.slice(prefix.length));
-	if(cmd) cmd.run(bot, message, args);
+	let cmd = client.commands.get(command.slice(prefix.length));
+	if(cmd) cmd.run(client, message, args);
     //if (message.content === 'ping') //{
     	//message.channel.send('pong');
   	//}
@@ -136,4 +136,4 @@ bot.on("message", message => {
 });
 
 
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.client_TOKEN);
