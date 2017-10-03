@@ -112,7 +112,7 @@ client.on("message", message => {
   var cmdTxt = message.content.split(" ")[0].substring(1).toLowerCase();
   var suffix = message.content.substring(cmdTxt.length + 2);
 	if(!command.startsWith(prefix)) return;
-	let cmd = client.commands.get(command.slice(prefix.length));
+	let cmd = bot.commands.get(command.slice(prefix.length));
 	if(cmd) cmd.run(client, message, args);
 
     //if (message.content === 'ping') {
