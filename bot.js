@@ -9,8 +9,8 @@ const botSettings = require("./botsettings.json")
 
 const prefix = botSettings.prefix;
 
-const bot = new Discord.Client({disableEveryone: true});
-bot.commands = new Discord.Collection();
+const client = new Discord.Client({disableEveryone: true});
+client.commands = new Discord.Collection();
 
 client.on("ready", () => {
    	  client.user.setStatus("dnd"); //dnd , online , ldle
