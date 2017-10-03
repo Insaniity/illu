@@ -105,20 +105,23 @@ fs.readdir("./cmds/", (err, files) => {
 });
 
 client.on("message", message => {
-	if(message.author.client) return;
+  if(message.author.client) return;
+	if(message.channel.type === "dm") {
+    return;
+	}
+
 	let messageArray = message.content.split(/\s+/g);
 	let command = messageArray[0];
 	let args = messageArray.slice(1);
-  var cmdTxt = message.content.split(" ")[0].substring(1).toLowerCase();
-  var suffix = message.content.substring(cmdTxt.length + 2);
+    var cmdTxt = message.content.split(" ")[0].substring(1).toLowerCase();
+    var suffix = message.content.substring(cmdTxt.length + 2);
+
 	if(!command.startsWith(prefix)) return;
+
+
+
 	let cmd = bot.commands.get(command.slice(prefix.length));
-	if(cmd) cmd.run(client, message, args);
-
-    //if (message.content === 'ping') {
-    	//message.channel.send('pong');
-  	//}
-
+	if(cmd) cmd.run(bot, message, args);
 });
 
 
