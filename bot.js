@@ -24,6 +24,32 @@ client.on("ready", () => {
 // 			 .catch(console.error);
 });
 
+client.on('guildMemberAdd', member => {
+  let guild = member.guild;
+  const MemberRole = guild.roles.find(r => r.name === "[1] Member");
+  member.addRole(MemberRole);
+});
+
+client.on("message", message => {
+  if(message.author.client) return;
+    if(message.channel.type === "dm") {
+    return;
+    }
+
+    let messageArray = message.content.split(/\s+/g);
+    let command = messageArray[0];
+    let args = messageArray.slice(1);
+    var cmdTxt = message.content.split(" ")[0].substring(1).toLowerCase();
+    var suffix = message.content.substring(cmdTxt.length + 2);
+
+    if(!command.startsWith(prefix)) return;
+
+
+
+    let cmd = bot.commands.get(command.slice(prefix.length));
+    if(cmd) cmd.run(bot, message, args);
+});
+
 module.exports.fire = (text, guild) => {
     if (!guild.channels) return
     let channel = guild.channels.find(c => c.topic === 'logs')
@@ -102,26 +128,6 @@ fs.readdir("./cmds/", (err, files) => {
 		console.log(`${i + 1}: ${f} loaded!`);
 		bot.commands.set(props.help.name, props);
 	});
-});
-
-client.on("message", message => {
-  if(message.author.client) return;
-	if(message.channel.type === "dm") {
-    return;
-	}
-
-	let messageArray = message.content.split(/\s+/g);
-	let command = messageArray[0];
-	let args = messageArray.slice(1);
-    var cmdTxt = message.content.split(" ")[0].substring(1).toLowerCase();
-    var suffix = message.content.substring(cmdTxt.length + 2);
-
-	if(!command.startsWith(prefix)) return;
-
-
-
-	let cmd = bot.commands.get(command.slice(prefix.length));
-	if(cmd) cmd.run(bot, message, args);
 });
 
 
