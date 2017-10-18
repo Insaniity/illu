@@ -26,7 +26,7 @@ client.on("ready", () => {
 
 client.on('guildMemberAdd', member => {
   let guild = member.guild;
-  const MemberRole = guild.roles.find(r => r.name === "[1] Member");
+  const MemberRole = guild.roles.find(r => r.name === "[I] Member");
   member.addRole(MemberRole);
 });
 
