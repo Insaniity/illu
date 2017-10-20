@@ -1,5 +1,5 @@
 module.exports.run = (client, message, args) => {
-  if(!message.member.hasPermission("ADMINSTRATOR")) return;
+  if(!message.member.hasPermission("ADMINISTRATOR")) return;
   if (!message.mentions.users.first()) return message.channel.send("**Mention a user to message them.**")
     let ment = message.mentions.users;
     let text = []
