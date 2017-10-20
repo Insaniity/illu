@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const bot = new Discord.bot();
+//const client = new Discord.bot();
 const fs = require("fs");
 const ms = require('ms');
 const moment = require('moment');
