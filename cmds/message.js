@@ -14,6 +14,8 @@ module.exports.run = (client, message, args) => {
         if (text.length === 0) return;
         message.channel.send(text.join(", ")+" **got messaged.**", {split:true});
     }, 1000);
+
+    message.delete();
 }
 
 module.exports.help = {
