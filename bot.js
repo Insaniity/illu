@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const client = new Discord.Client();
+const bot = new Discord.bot();
 const fs = require("fs");
 const ms = require('ms');
 const moment = require('moment');
@@ -12,7 +12,7 @@ const botSettings = require("./botsettings.json")
 
 const prefix = botSettings.prefix;
 
-const bot = new Discord.Client({disableEveryone: true});
+const bot = new Discord.bot({disableEveryone: true});
 bot.commands = new Discord.Collection();
 
 // Modlog testing.
@@ -131,7 +131,7 @@ bot.on("ready", () => {
 //  guild.defaultChannel.send("Hey! Thanks for inviting me. To see my commands just say `x!help`. Have fun using XaQBot :joy:");
 //});
 
-client.on('guildMemberAdd', member => {
+bot.on('guildMemberAdd', member => {
   let guild = member.guild;
   const MemberRole = guild.roles.find(r => r.name === "[I] Member");
   member.addRole(MemberRole);
@@ -188,17 +188,17 @@ module.exports.fire = (text, guild) => {
     })
 }
 
-client.on('messageDelete', msg => {
+bot.on('messageDelete', msg => {
     if (msg.channel.type !== "text") return
     exports.fire(`**#${msg.channel.name} | ${msg.author.tag} deleted their message:** \`${msg.content}\``, msg.guild)
 })
 
-client.on('messageUpdate', (msg, newMsg) => {
+bot.on('messageUpdate', (msg, newMsg) => {
     if (msg.content === newMsg.content) return
     exports.fire(`**#${msg.channel.name} | ${msg.author.tag} edited their message:**\n**before:** \`${msg.content}\`\n**+after:** \`${newMsg.content}\``, msg.guild)
 })
 
-client.on('guildMemberUpdate', (old, nw) => {
+bot.on('guildMemberUpdate', (old, nw) => {
     let txt
     if (old.roles.size !== nw.roles.size) {
         if (old.roles.size > nw.roles.size) {
@@ -216,15 +216,15 @@ client.on('guildMemberUpdate', (old, nw) => {
     exports.fire(txt, nw.guild)
 })
 
-client.on('roleCreate', (role) => {
+bot.on('roleCreate', (role) => {
     exports.fire("**New role created**", role.guild)
 })
 
-client.on('roleDelete', (role) => {
+bot.on('roleDelete', (role) => {
     exports.fire("**Role deleted -> `" + role.name + "`**", role.guild)
 })
 
-client.on('roleUpdate', (old, nw) => {
+bot.on('roleUpdate', (old, nw) => {
     let txt
     if (old.name !== nw.name) {
         txt = `**${old.name} | Role name updated to -> \`${nw.name}\`**`
@@ -232,11 +232,11 @@ client.on('roleUpdate', (old, nw) => {
     exports.fire(txt, nw.guild)
 })
 
-client.on('guildBanAdd', (guild, user) => {
+bot.on('guildBanAdd', (guild, user) => {
     exports.fire(`**User banned -> \`${user.tag}\`**`, guild)
 })
 
-client.on('guildBanRemove', (guild, user) => {
+bot.on('guildBanRemove', (guild, user) => {
     exports.fire(`**User unbanned -> \`${user.tag}\`**`, guild)
 })
 
