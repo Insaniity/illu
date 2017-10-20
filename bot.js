@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-//const client = new Discord.bot();
+const client = new Discord.bot();
 const fs = require("fs");
 const ms = require('ms');
 const moment = require('moment');
@@ -12,7 +12,7 @@ const botSettings = require("./botsettings.json")
 
 const prefix = botSettings.prefix;
 
-const bot = new Discord.bot({disableEveryone: true});
+const bot = new Discord.client({disableEveryone: true});
 bot.commands = new Discord.Collection();
 
 // Modlog testing.
