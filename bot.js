@@ -1,18 +1,15 @@
-const Discord = require("discord.js");
-const client = new Discord.bot();
+const Discord = require('discord.js');
+const client = new Discord.Client();
 const fs = require("fs");
 const ms = require('ms');
 const moment = require('moment');
 require("moment-duration-format");
 const request = require('request');
-const Cleverbot = require('cleverbot-node');
-const clbot = new Cleverbot;
-clbot.configure({botapi: 'CC2fhxHqzjAe--t9Nmwr4rOo3ew'});
 const botSettings = require("./botsettings.json")
 
 const prefix = botSettings.prefix;
 
-const bot = new Discord.client({disableEveryone: true});
+const bot = new Discord.Client({disableEveryone: true});
 bot.commands = new Discord.Collection();
 
 // Modlog testing.
@@ -139,9 +136,6 @@ bot.on('guildMemberAdd', member => {
 
 bot.on("message", message => {
     if(message.author.bot) return;
-    if(message.content.includes("<@335351230601887764> help")){
-        message.author.send("My prefix is x!\nSay x!help in a server to get my commands!")
-    }
     if(message.channel.type === "dm") {
 /*  clbot.write(message.content, (response) => {
       message.channel.startTyping();
@@ -158,18 +152,7 @@ bot.on("message", message => {
     let args = messageArray.slice(1);
     var cmdTxt = message.content.split(" ")[0].substring(1).toLowerCase();
     var suffix = message.content.substring(cmdTxt.length + 2);
-
-    if(message.content.includes('<@335351230601887764>')) {
- /*   clbot.write(message.content, (response) => {
-      message.channel.startTyping();
-      setTimeout(() => {
-        message.channel.send(response.output).catch(console.error);
-        message.channel.stopTyping();
-      }, Math.random() * (1 - 3) + 1 * 1000);
-    }); */
-message.channel.send("I can't respond to this right now.")
-  }
-
+    
     if(!command.startsWith(prefix)) return;
 
 
