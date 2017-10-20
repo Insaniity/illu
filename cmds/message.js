@@ -4,7 +4,6 @@ module.exports.run = (client, message, args) => {
     let ment = message.mentions.users;
     let text = []
 
-    var cmdTxt = message.content.split(" ; ")[0].substring(1).toLowerCase();
     var suffix = message.content.substring(cmdTxt.length + 2);
 
     ment.forEach(m => {
