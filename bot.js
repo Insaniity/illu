@@ -130,7 +130,7 @@ bot.on("ready", () => {
 
 bot.on('guildMemberAdd', member => {
   let guild = member.guild;
-  const MemberRole = guild.roles.find(r => r.name === "[I] Member");
+  const MemberRole = guild.roles.find(r => r.name === "Member");
   member.addRole(MemberRole);
 });
 
