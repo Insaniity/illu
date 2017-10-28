@@ -1,7 +1,8 @@
 module.exports.run = (client, message, args) => {
 
-  const Krystal = guild.roles.find(r => r.name === "Hide Announcements");
-  message.author.addRole(Krystal);
+  let guild = message.guild;
+  const MemberRole = guild.roles.find(r => r.name === "Hide Announcements");
+  message.author.addRole(MemberRole);
 
 }
 

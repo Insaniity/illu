@@ -119,9 +119,12 @@ bot.on("ready", () => {
       bot.user.setStatus("online"); //dnd , online , ldle
       bot.user.setGame(":boi: Nonce!");
       console.log("Running as user "+bot.user.username+"#"+bot.user.discriminator+".");
-//          bot.user.setAvatar('./avatar.png')
-//              .then(user => console.log(`New avatar set!`))
-//              .catch(console.error);
+ //         bot.user.setAvatar('./icon.png')
+   //           .then(user => console.log(`New avatar set!`))
+     //         .catch(console.error);
+  //        bot.user.setUsername("Illu's Chat")
+    //          .then(user => console.log(`New username set!`))
+      //        .catch(console.error);
 });
 
 //bot.on("guildCreate", guild => {
@@ -228,4 +231,5 @@ process.on('unhandledRejection', error => {
   console.error(`Uncaught Promise Error: \n${error.stack}`);
 });
 
-bot.login(process.env.client_TOKEN);
+//bot.login(process.env.client_TOKEN);
+bot.login("MzYzNjU0NjgyNDY5NDY2MTMz.DLRErg.sHP-3Y-8Kc5LdHDeYE516fwFkyY")
