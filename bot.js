@@ -117,7 +117,7 @@ fs.readdir("./cmds/", (err, files) => {
 
 bot.on("ready", () => {
       bot.user.setStatus("online"); //dnd , online , ldle
-      bot.user.setGame(":boi: Nonce!");
+      bot.user.setGame("Hey! || !verify");
       console.log("Running as user "+bot.user.username+"#"+bot.user.discriminator+".");
  //         bot.user.setAvatar('./icon.png')
    //           .then(user => console.log(`New avatar set!`))
