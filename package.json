@@ -9,5 +9,8 @@
   "dependencies": {
     "discord.js": "^11.1.0",
     "moment": "^2.18.1"
-  }
+  },
+  "engines": {
+    "node": "8.8.1"
+  },
 }
