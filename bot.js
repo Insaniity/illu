@@ -135,6 +135,19 @@ bot.on('guildMemberAdd', member => {
   let guild = member.guild;
   const MemberRole = guild.roles.find(r => r.name === "Member");
   member.addRole(MemberRole);
+  let ava = member.user.displayAvatarURL
+  if (!guild.channels) return
+  let channel = guild.channels.find(c => c.name === 'new-members')
+  if (!channel) return
+  guild.channels.find(c => c.name === 'new-members').send(`Welcome ${member}.\n${ava}`)
+});
+
+bot.on('guildMemberRemove', member => {
+  let guild = member.guild;
+  if (!guild.channels) return
+  let channel = guild.channels.find(c => c.name === 'new-members')
+  if (!channel) return
+  guild.channels.find(c => c.name === 'new-members').send(`Goodbye ${member.user.username}. :frowning:`)
 });
 
 bot.on("message", message => {
@@ -231,5 +244,5 @@ process.on('unhandledRejection', error => {
   console.error(`Uncaught Promise Error: \n${error.stack}`);
 });
 
-//bot.login(process.env.client_TOKEN);
-bot.login("MzYzNjU0NjgyNDY5NDY2MTMz.DLRErg.sHP-3Y-8Kc5LdHDeYE516fwFkyY")
+bot.login(process.env.client_TOKEN);
+
