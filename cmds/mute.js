@@ -6,8 +6,6 @@ module.exports.run =  (client, message, args) => {
 	let toMute = message.mentions.members.first() || message.guild.members.get(args[0]);
 	if(!toMute) return message.channel.send("You did not specify a user mention or ID!");
 
-	if(message.author == "190174684371746818") return message.channel.send("sorry no aj's allowed kthx bye.")
-
 	if(toMute.id === message.author.id) return message.channel.send("You cannot mute yourself.");
 	if(toMute.highestRole.position >= message.member.highestRole.position) return message.channel.send("You cannot mute a member who is higher or has the same role as you.");
 
