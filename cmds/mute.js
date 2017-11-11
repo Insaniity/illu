@@ -34,6 +34,10 @@ module.exports.run =  (client, message, args) => {
 
  toMute.addRole(role);
 		message.channel.send("I have muted this user!");
+
+let role1 = message.guild.roles.find(r => r.name === "verified");
+
+ toMute.removeRole(role1);
 }
 
 module.exports.help = {
