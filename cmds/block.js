@@ -1,5 +1,5 @@
 const fs = module.require("fs");
-const kryblocked = require("../krystal/blocked.json");
+const kryblocked = require("./krystal/blocked.json");
 const blocked = kryblocked.blockedIDs;
 
 module.exports.run =  (client, message, args) => {
@@ -9,8 +9,8 @@ module.exports.run =  (client, message, args) => {
                 file.blockedIDs[args[0]] = {
                     blocked: "true"
                 };
-                fs.writeFileSync("../krystal/blocked.json", JSON.stringify(file));
-                message.channel.send("Added `" + message.content.substr(7) + "` to the blacklist.");
+                fs.writeFileSync("./krystal/blocked.json", JSON.stringify(file));
+                message.channel.send("Added `" + message.content.substr(12) + "` to the blacklist.");
             } else {
                 message.channel.send("ID is already blacklisted.");
             }
