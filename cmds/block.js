@@ -4,6 +4,8 @@ const blocked = kryblocked.blockedIDs;
 
 module.exports.run =  (client, message, args) => {
 
+    let file = JSON.parse(fs.readFileSync("./src/config.json", "utf8"));
+
         if (message.member.hasPermission('ADMINISTRATOR')) {
             if (!file.blockedIDs[args[0]]) {
                 file.blockedIDs[args[0]] = {
