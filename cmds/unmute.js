@@ -12,7 +12,12 @@ module.exports.run = (client, message, args) => {
 
 	toMute.removeRole(role);
 
-		console.log(`I have unmuted ${toMute.user.tag}.`);
+		message.channel.send(`I have unmuted ${toMute.user.tag}.`);
+
+	let role1 = message.guild.roles.find(r => r.name === "verified");
+
+	 toMute.addRole(role1);
+
 }
 
 module.exports.help = {
