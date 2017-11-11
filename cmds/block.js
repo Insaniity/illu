@@ -4,7 +4,7 @@ const blocked = kryblocked.blockedIDs;
 
 module.exports.run =  (client, message, args) => {
 
-    let file = JSON.parse(fs.readFileSync("./src/config.json", "utf8"));
+    let file = JSON.parse(fs.readFileSync("./krystal/blocked.json", "utf8"));
 
         if (message.member.hasPermission('ADMINISTRATOR')) {
             if (!file.blockedIDs[args[0]]) {
